@@ -1,18 +1,21 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
-
+#include"Lista.h"
 
 class Cliente
 {
     public:
+        Cliente();
         Cliente(string n, string t, string tj);
         ~Cliente();
-        //Mirar para insertar un pedido raro a la lista
+        void insertarPedido(Pedido);
     private:
         string nombre;
         string tipo;
         string tarjeta;
-        //Mirar lio listas para esto Apartado 4
+        Lista listaPedidos;
+        friend class NodoArbol;
+        friend class ArbolB;
 };
 
 #endif // CLIENTE_H

@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1608026141 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\main.cpp
+	<iostream>
+	"Nodo.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+	<ctime>
+	<fstream>
+	<cstdlib>
+	<Pedido.h>
+	<string>
+	<string.h>
+	<Web.h>
+
+1608025776 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\nodo.h
+	<iostream>
+	"Pedido.h"
+
+1608025648 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\pedido.h
+	<string.h>
+	<string>
+
+1608025675 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\pila.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608025739 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\cola.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608025757 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\lista.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608025703 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\web.h
+	"Pedido.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+
+1608034223 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\arbolb.cpp
+	"ArbolB.h"
+
+1608034223 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\arbolb.h
+	"Cliente.h"
+	"NodoArbol.h"
+
+1608034482 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\cliente.h
+	"Lista.h"
+
+1608033195 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\cliente.cpp
+	"Cliente.h"
+
+1608025864 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\cola.cpp
+	"Cola.h"
+	<iostream>
+	"Pedido.h"
+
+1608025893 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\lista.cpp
+	"Lista.h"
+	"iostream"
+	"Pedido.h"
+
+1608025923 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\nodo.cpp
+	"Nodo.h"
+	"Pedido.h"
+
+1608025954 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\pedido.cpp
+	"Pedido.h"
+	"iostream"
+	<string>
+	<string.h>
+	<cstdlib>
+	<ctime>
+
+1608025985 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\pila.cpp
+	"Pila.h"
+	<iostream>
+
+1608026033 source:c:\users\javie\desktop\git hub\pl2ed\gestionweb2\src\web.cpp
+	"Web.h"
+	<fstream>
+	<string>
+	<cstdlib>
+
+1608034384 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\nodoarbol.h
+	"Cliente.h"
+

@@ -5,16 +5,14 @@
 class NodoArbol
 {
     public:
-        NodoArbol(Cliente c, NodoArbol *i = NULL , NodoArbol *d = NULL);
-        virtual ~NodoArbol();
-
+        NodoArbol(Cliente c, NodoArbol *i = NULL, NodoArbol *d = NULL);
+        ~NodoArbol();
     private:
-        Cliente valor;
+        Cliente cliente;
         NodoArbol *izq;
         NodoArbol *der;
-        friend ArbolB;
+        friend class ArbolB;
 
 };
-typedef Nodo *anodo;
 
 #endif // NODOARBOL_H

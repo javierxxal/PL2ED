@@ -2,6 +2,10 @@
 
 Cliente::Cliente()
 {
+
+}
+Cliente::Cliente(string n, string t, string tj)
+{
     //ctor
 }
 

@@ -1,8 +1,8 @@
 #include "NodoArbol.h"
 
-NodoArbol::NodoArbol(Cliente c, NodoArbol *i = NULL , NodoArbol *d = NULL)
+NodoArbol::NodoArbol(Cliente c, NodoArbol *i, NodoArbol *d)
 {
-    valor = c;
+    cliente = c;
     izq = i;
     der = d;
 

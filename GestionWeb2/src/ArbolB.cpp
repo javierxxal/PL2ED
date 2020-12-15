@@ -2,7 +2,7 @@
 
 ArbolB::ArbolB()
 {
-    //ctor
+raiz = NULL;
 }
 
 ArbolB::~ArbolB()
