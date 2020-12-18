@@ -2,6 +2,8 @@
 #define ARBOLB_H
 #include "Cliente.h"
 #include "NodoArbol.h"
+#include "string"
+#include "string.h";
 
 class ArbolB
 {
@@ -11,8 +13,13 @@ class ArbolB
         ~ArbolB();
         bool vacio();
         int altura();
-        void insertar(Cliente c);
-        esta(string nombre);
+        void insertar(Cliente c); // Metodo compare to
+        bool esta(string nombre);
+        Cliente buscar(string nombre);
+        //3º entrega
+        void mostrarPreorden();
+        int cuentaProducto(string descripcion); //Convertir todo a mayus para evitar problemas
+        void mostrarVip(); //Repetir metodo de preorden
 
     private:
     NodoArbol *raiz;

@@ -8,7 +8,6 @@ class Cliente
         Cliente();
         Cliente(string n, string t, string tj);
         ~Cliente();
-        void insertarPedido(Pedido);
     private:
         string nombre;
         string tipo;
@@ -16,6 +15,7 @@ class Cliente
         Lista listaPedidos;
         friend class NodoArbol;
         friend class ArbolB;
+        friend class Web;
 };
 
 #endif // CLIENTE_H
