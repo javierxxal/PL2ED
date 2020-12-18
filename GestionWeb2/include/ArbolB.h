@@ -4,6 +4,9 @@
 #include "NodoArbol.h"
 #include "string"
 #include "string.h";
+#include "Pedido.h"
+#include "Nodo.h"
+
 
 class ArbolB
 {
@@ -12,14 +15,15 @@ class ArbolB
         ArbolB(Cliente c);
         ~ArbolB();
         bool vacio();
-        int altura();
-        void insertar(Cliente c); // Metodo compare to
-        bool esta(string nombre);
-        Cliente buscar(string nombre);
+        int altura(NodoArbol *nodo);
+        void insertar(Cliente c, NodoArbol *nodo); // Metodo compare to
+        void insertarPedido(Pedido p, NodoArbol * nodo);
+        bool esta(string nombre, NodoArbol *nodo);
+        Cliente buscar(string nombre, NodoArbol *nodo);
         //3º entrega
-        void mostrarPreorden();
-        int cuentaProducto(string descripcion); //Convertir todo a mayus para evitar problemas
-        void mostrarVip(); //Repetir metodo de preorden
+        void mostrarPreorden(NodoArbol *nodo);
+        int cuentaProducto(string descripcion,NodoArbol *nodo); //Convertir todo a mayus para evitar problemas
+        void mostrarVip(NodoArbol *nodo); //Repetir metodo de preorden
 
     private:
     NodoArbol *raiz;

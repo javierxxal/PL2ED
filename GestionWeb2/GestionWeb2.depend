@@ -87,3 +87,97 @@
 1608034384 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\nodoarbol.h
 	"Cliente.h"
 
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\main.cpp
+	<iostream>
+	"Nodo.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+	<ctime>
+	<fstream>
+	<cstdlib>
+	<Pedido.h>
+	<string>
+	<string.h>
+	<Web.h>
+
+1608322418 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodo.h
+	<iostream>
+	"Pedido.h"
+
+1608319204 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\pedido.h
+	<string.h>
+	<string>
+
+1608289861 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\pila.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608289861 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\cola.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608322389 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\lista.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608289861 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\web.h
+	"Pedido.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+
+1608321244 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cliente.cpp
+	"Cliente.h"
+
+1608321238 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\cliente.h
+	"Lista.h"
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cola.cpp
+	"Cola.h"
+	<iostream>
+	"Pedido.h"
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\lista.cpp
+	"Lista.h"
+	"iostream"
+	"Pedido.h"
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\nodo.cpp
+	"Nodo.h"
+	"Pedido.h"
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\nodoarbol.cpp
+	"NodoArbol.h"
+
+1608310359 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodoarbol.h
+	"Cliente.h"
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\pedido.cpp
+	"Pedido.h"
+	"iostream"
+	<string>
+	<string.h>
+	<cstdlib>
+	<ctime>
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\pila.cpp
+	"Pila.h"
+	<iostream>
+
+1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\web.cpp
+	"Web.h"
+	<fstream>
+	<string>
+	<cstdlib>
+
+1608320969 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\arbolb.cpp
+	"ArbolB.h"
+
+1608320174 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\arbolb.h
+	"Cliente.h"
+	"NodoArbol.h"
+	"string"
+	"string.h"
+	"Pedido.h"
+

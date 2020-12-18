@@ -17,6 +17,7 @@ class Nodo
         friend class Lista;
         friend class Pedido;
         friend class Web;
+        friend class ArbolB;
 };
 typedef Nodo *pnodo;
 

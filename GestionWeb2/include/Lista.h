@@ -26,6 +26,8 @@ class Lista
         pnodo primero;
         pnodo ultimo;
         int longitud;  // Mide la longitud de la lista
+
+        friend class ArbolB;
 };
 
 #endif // LISTA_H

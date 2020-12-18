@@ -11,6 +11,7 @@ class Pedido
         Pedido();
         Pedido(string datos);
         Pedido(string n, string c, string d , string tp , string tj, int t);
+        //Falta un constructor para los pedidos de las listas clientes.
         virtual ~Pedido();
         //Operaciones
         string getTipo(); //Devuelve el tipo de pedido
@@ -30,6 +31,7 @@ class Pedido
         friend class Cola;
         friend class Lista;
         friend class Web;
+        friend class ArbolB;
 };
 
 #endif // PEDIDO_H
