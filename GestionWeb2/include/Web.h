@@ -5,6 +5,7 @@
 #include "Cola.h"
 #include "Lista.h"
 #include "ArbolB.h"
+#include "Cliente.h"
 
 class Web
 {
@@ -19,9 +20,10 @@ public:
         void mostrarColas(); //funcion para ver las dos colas del sistema
         void mostrarPila();
         void mostrarLista();
+        bool webVacia(); //devuelve si TODAS las EEDD de la web estan vacias (a excepcion del arbol)
     private:
         //Operación auxiliar privada
-        void incluirListaEnvios(Cola& c , int n);//Introduce n pedidos correctos a listaEnviar enviando los errones a pilaErroneos
+        int incluirListaEnvios(Cola& c , int n,int cont);//Introduce n pedidos correctos a listaEnviar enviando los errones a pilaErroneos
         //Atributos
         Pila pilaErroneos;
         Cola colaReg;

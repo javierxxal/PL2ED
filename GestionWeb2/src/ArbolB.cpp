@@ -5,9 +5,7 @@ ArbolB::ArbolB()
 raiz = NULL;
 }
 ArbolB::ArbolB(Cliente c){
-    raiz = new NodoArbol(c,NULL,NULL);
-    nombreRaiz = c.nombre;
-
+    raiz = new NodoArbol(c);
 }
 ArbolB::~ArbolB()
 {
@@ -33,7 +31,7 @@ int ArbolB::altura(NodoArbol *nodo){
             else return 0;
         }
         else{
-            return 1 + (altura(nodo->der)>altura(nodo->izq)?altura(nodo->der):altura(nodo->izq));
+            return 1 + (altura(nodo->der)>altura(nodo->izq)?altura(nodo->der):altura(nodo->izq)); //se queda con la mayor de las alturas
         }
     }
     else return 0;
@@ -41,20 +39,25 @@ int ArbolB::altura(NodoArbol *nodo){
 }
 void ArbolB::insertar(Cliente c, NodoArbol *nodo){
     //A la hora de llamar a esta función para el árbol introducir la raiz de este
-    if(nodo->cliente.nombre==c.nombre || nodo->cliente.nombre < c.nombre){
-        if(nodo->izq !=NULL){
-            insertar(c, nodo->izq);
-        }
-        else{
-            nodo->izq = new NodoArbol(c,NULL,NULL);
-        }
+    if (vacio()){
+        raiz = new NodoArbol(c);
     }
     else{
-        if(nodo->der !=NULL){
-            insertar(c, nodo->der);
+        if(nodo->cliente.nombre==c.nombre || nodo->cliente.nombre < c.nombre){
+            if(nodo->izq !=NULL){
+                insertar(c, nodo->izq);
+            }
+            else{
+                nodo->izq = new NodoArbol(c);
+            }
         }
         else{
-            nodo->der = new NodoArbol(c,NULL,NULL);
+            if(nodo->der !=NULL){
+                insertar(c, nodo->der);
+            }
+            else{
+                nodo->der = new NodoArbol(c);
+            }
         }
     }
 }
@@ -99,27 +102,39 @@ bool ArbolB::esta(string nombre, NodoArbol *nodo){
 }
 
 void ArbolB::buscar(string nombre, NodoArbol *nodo){
-    if(nombre == nodo->cliente.nombre){
-        nodo->cliente.verCliente();
+    if (!esta(nombre,nodo)){
+        cout << "Este cliente no está en el arbol" << endl;
     }
-    else if (nombre < nodo->cliente.nombre && nodo->izq !=NULL) buscar(nombre,nodo->izq);
-    else if (nombre > nodo->cliente.nombre && nodo->der !=NULL) buscar(nombre, nodo->der);
+    else{
+        if(nombre == nodo->cliente.nombre){
+            nodo->cliente.verCliente();
+        }
+        else if (nombre < nodo->cliente.nombre) buscar(nombre,nodo->izq);
+        else if (nombre > nodo->cliente.nombre) buscar(nombre, nodo->der);
+    }
 }
 
 // 3º entrega
 void ArbolB::mostrarPreorden(NodoArbol *nodo){
-    nodo->cliente.verCliente();
-    if(nodo->izq !=NULL){
-        mostrarPreorden(nodo->izq);
+    if (vacio()){
+        cout << "El arbol esta vacio" << endl;
     }
-    if(nodo->der !=NULL){
-        mostrarPreorden(nodo->der);
+    else{
+        nodo->cliente.verCliente();
+        if(nodo->izq !=NULL){
+            mostrarPreorden(nodo->izq);
+        }
+        if(nodo->der !=NULL){
+            mostrarPreorden(nodo->der);
+        }
     }
 }
 
 int ArbolB::cuentaProducto(string descripcion, NodoArbol *nodo){
-    //Falta poner los strings a mayusculas para evitar problemas
     int r = 0, i = 0,d = 0;
+    if (vacio()){
+        cout << "El arbol esta vacio" << endl;
+    }
     if(!nodo->cliente.listaPedidos.es_vacia()){
          pnodo aux = nodo->cliente.listaPedidos.primero;
          while(aux != NULL){

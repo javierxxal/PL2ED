@@ -16,7 +16,7 @@ class ArbolB
         ~ArbolB();
         bool vacio();
         int altura(NodoArbol *nodo);
-        void insertar(Cliente c, NodoArbol *nodo); // Metodo compare to
+        void insertar(Cliente c, NodoArbol *nodo);
         void insertarPedido(Pedido p, NodoArbol * nodo);
         bool esta(string nombre, NodoArbol *nodo);
         void buscar(string nombre, NodoArbol *nodo);
@@ -27,7 +27,6 @@ class ArbolB
 
     private:
     NodoArbol *raiz;
-    string nombreRaiz;
     friend class Web;
 
 

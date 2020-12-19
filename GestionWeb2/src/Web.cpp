@@ -6,7 +6,8 @@
 
 Web::Web()
 {
-    //ctor
+    Cliente cli = Cliente("Nnnnnnn","123441231","5252523425",0);
+    arbolCliente.insertar(cli,arbolCliente.raiz);
 }
 
 Web::~Web()
@@ -40,8 +41,8 @@ int Web::introducirTxt(){
     return contador;
 
 }
-// ERROR falta buscar una forma de saber a que tipo de sistema se añade.
-void Web::incluirListaEnvios(Cola& c, int n){
+
+int Web::incluirListaEnvios(Cola& c, int n,int cont){
     int contador=0;
     while(contador<n && !c.esVacia()){
         if(c.prim().erroneo){
@@ -49,18 +50,25 @@ void Web::incluirListaEnvios(Cola& c, int n){
             c.desencolar();
         }
         else{
-            listaEnviar1.insertarOrdenado(c.prim());
-            contador++;
+            if (cont%2 == 0){
+                listaEnviar1.insertarOrdenado(c.prim());
+            }
+            else {
+                listaEnviar2.insertarOrdenado(c.prim());
+            }
             c.desencolar();
+            cont++;
+            contador++;
         }
     }
+    return cont;
 }
 
 void Web::pasarTiempo(){
     //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
-    incluirListaEnvios(colaReg,1);
-    incluirListaEnvios(colaNR,1);
-    incluirListaEnvios(colaReg,2);
+    int orden;
+    orden = incluirListaEnvios(colaReg,3,0);
+    orden = incluirListaEnvios(colaNR,1,orden);
     cout<<"Estas son las estructuras de datos del sistema web:\n";
     mostrarColas();
     system("pause");
@@ -77,8 +85,8 @@ void Web::pasarTiempo(){
     int t1, t2 = -1 , treal = 0;
     // El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
     int caso = 0;
-    while((!listaEnviar1.es_vacia() || !listaEnviar2.es_vacia()) && continuar != 'N'){
-        // Comprobamos que los tiempos de preparación t1 y t2 son correctos.
+    while((!webVacia()) && continuar != 'N'){
+        //Comprobamos que los tiempos de preparación t1 y t2 son correctos.
         if(!listaEnviar1.es_vacia() && t1<=0){
             t1 = listaEnviar1.prim().tiempo;
         }
@@ -94,12 +102,12 @@ void Web::pasarTiempo(){
         }
 
         //Preparamos los pedidos e incluimos 1 pedido cada 2 min
-        while(!t1 == 0 &&  !t2==0){
-            if(!(t1 == -1)){
+        while(t1 != 0 &&  t2 != 0){
+            if(t1 != -1){
                 cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<t1<<" minutos."<<endl;
                 t1--;
             }
-            if(!(t2 ==-1)){
+            if(t2 != -1){
                 cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<t2<<" minutos."<<endl;
                 t2--;
             }
@@ -112,39 +120,41 @@ void Web::pasarTiempo(){
                 for(int i=0; i<2; i++){
                     //Caso1
                     if(caso<3){
-                        incluirListaEnvios(colaReg,1);
+                        orden = incluirListaEnvios(colaReg,1,orden);
+                        caso++;
                     }
                     //Resto de casos
                     else{
                         //Caso 2
                         if(pilaErroneos.mostrarCima().prioridad !=0){
-                            if(i==0){
-                                    listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                            if(orden%2 == 0){
+                                listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                                orden++;
                             }
                             else{
                                 listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
+                                orden++;
                             }
                             pilaErroneos.desapilar();
                         }
                         //Caso 3
                         else if(!colaNR.esVacia()){
-                            incluirListaEnvios(colaReg,1);
+                            orden = incluirListaEnvios(colaNR,1,orden);
                         }
                         //Caso 4
                         else if(!pilaErroneos.esVacia()){
-                            if(i==0){
+                            if(orden%2 == 0){
                                 listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
                             }
                             else{
                                 listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
                             }
+                            orden++;
                             pilaErroneos.desapilar();
                         }
+                        caso = 0;
                     }
                 }
-                //Para evitar saltarnos casos hacemos la respectiva cuenta fuera del for
-                if(caso<3){caso++;}
-                else{caso=0;}
             }
         }
         // Si alguna de las condiciones se cumple significa que se ha terminado de preparar sus respectivos pedidos y solo hay que mostrar sus datos y enviarlos.
@@ -156,7 +166,6 @@ void Web::pasarTiempo(){
             system("pause");
             system("cls");
             arbolCliente.insertarPedido(listaEnviar1.prim(),arbolCliente.raiz);
-            // Falta añadir un cliente a un nuevo arbol de busqueda.
             listaEnviar1.resto();
         }
         if(t2 ==0){
@@ -167,7 +176,6 @@ void Web::pasarTiempo(){
             system("pause");
             system("cls");
             arbolCliente.insertarPedido(listaEnviar2.prim(),arbolCliente.raiz);
-            // Falta añadir un cliente a un nuevo arbol de busqueda.
             listaEnviar2.resto();
         }
         if(!listaEnviar1.es_vacia() || !listaEnviar2.es_vacia()){
@@ -210,4 +218,7 @@ void Web::mostrarLista(){
     listaEnviar2.verLista();
     cout<<"\n";
 
+}
+bool Web::webVacia(){
+    return pilaErroneos.esVacia() && colaReg.esVacia() && colaNR.esVacia() && listaEnviar1.es_vacia() && listaEnviar2.es_vacia();
 }
