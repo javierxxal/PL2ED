@@ -10,13 +10,14 @@ class Pedido
         //Constructores
         Pedido();
         Pedido(string datos);
-        Pedido(string n, string c, string d , string tp , string tj, int t);
-        //Falta un constructor para los pedidos de las listas clientes.
+        Pedido(string n, string c, string d , string tp , string tj, int t,bool err);
+        Pedido(string n,string d,int t);
         virtual ~Pedido();
         //Operaciones
         string getTipo(); //Devuelve el tipo de pedido
         int getPrioridad(); //Devuelve la prioridad del pedido siendo VIP=2 NVI=1 NR=0
         void toStr();     //Muestratodo el pedido
+        void toStr2(); //muestra solo el nombre la direccion y el tiempo del pedido
     private:
         string nombre;
         string ncliente;

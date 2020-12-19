@@ -1,4 +1,7 @@
 #include "Cliente.h"
+#include <iostream>
+#include "Nodo.h"
+using namespace std;
 
 Cliente::Cliente()
 {
@@ -6,7 +9,10 @@ Cliente::Cliente()
 }
 Cliente::Cliente(string n, string t, string tj, int p)
 {
-    //ctor
+    nombre = n;
+    tipo =t;
+    tarjeta = tj;
+    prioridad = p;
 }
 
 Cliente::~Cliente()
@@ -15,6 +21,10 @@ Cliente::~Cliente()
 }
 
 void Cliente::verCliente(){
-    //Implementar un toString de cliente con sus datos y pedidos;
 
+    cout << "Nombre: " << nombre << endl;
+    cout << "Tipo: " << tipo << endl;
+    cout << "Tarjeta: " << tarjeta << endl;
+    cout << "Pedidos realizados: " << endl;
+    listaPedidos.verLista();
 }

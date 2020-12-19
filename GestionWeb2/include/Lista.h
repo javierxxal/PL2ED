@@ -19,7 +19,8 @@ class Lista
         Pedido prim(); //Devuelve el primer pedido de la lista
         Pedido ult(); //Devuelve el último pedido de la lista
         int lon();//Devuelve la longitud de la lista
-        void verLista(); //funcion hecha con fines de comprension de la practica
+        void verLista(); //muestra todos los datos de los pedidos
+        void verLista2(); //solo muestra ciertos datos de los pedidos
 
     private:
         //Atributos

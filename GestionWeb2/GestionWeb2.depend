@@ -181,3 +181,100 @@
 	"string.h"
 	"Pedido.h"
 
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\main.cpp
+	<iostream>
+	"Nodo.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+	<ctime>
+	<fstream>
+	<cstdlib>
+	<Pedido.h>
+	<string>
+	<string.h>
+	<Web.h>
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\nodo.h
+	<iostream>
+	"Pedido.h"
+
+1608384049 c:\users\dani\documents\github\pl2ed\gestionweb2\include\pedido.h
+	<string.h>
+	<string>
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\pila.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\cola.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608384134 c:\users\dani\documents\github\pl2ed\gestionweb2\include\lista.h
+	"Nodo.h"
+	"Pedido.h"
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\web.h
+	"Pedido.h"
+	"Pila.h"
+	"Cola.h"
+	"Lista.h"
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\arbolb.cpp
+	"ArbolB.h"
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\arbolb.h
+	"Cliente.h"
+	"NodoArbol.h"
+	"string"
+	"string.h"
+	"Pedido.h"
+	"Nodo.h"
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\cliente.h
+	"Lista.h"
+
+1608381639 c:\users\dani\documents\github\pl2ed\gestionweb2\include\nodoarbol.h
+	"Cliente.h"
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\cola.cpp
+	"Cola.h"
+	<iostream>
+	"Pedido.h"
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\lista.cpp
+	"Lista.h"
+	"iostream"
+	"Pedido.h"
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\nodo.cpp
+	"Nodo.h"
+	"Pedido.h"
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\nodoarbol.cpp
+	"NodoArbol.h"
+
+1608384048 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\pedido.cpp
+	"Pedido.h"
+	"iostream"
+	<string>
+	<string.h>
+	<cstdlib>
+	<ctime>
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\pila.cpp
+	"Pila.h"
+	<iostream>
+
+1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\web.cpp
+	"Web.h"
+	<fstream>
+	<string>
+	<cstdlib>
+
+1608383650 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\cliente.cpp
+	"Cliente.h"
+	<iostream>
+	"Nodo.h"
+

@@ -13,14 +13,14 @@ string NR ="NR";
 Pedido::Pedido(){
 
 }
-Pedido::Pedido(string n, string c, string d , string tp , string tj, int t){
+Pedido::Pedido(string n, string c, string d , string tp , string tj, int t,bool err){
     nombre = n;
     ncliente = c;
     direccion = d;
     tipo = tp;
     tarjeta = tj;
     tiempo = t;
-    erroneo = false;
+    erroneo = err;
 
     if(strcmp(VIP.c_str(),tipo.c_str()) == 0){
             prioridad = 2;
@@ -33,6 +33,11 @@ Pedido::Pedido(string n, string c, string d , string tp , string tj, int t){
             prioridad = 0;
     }
 
+}
+Pedido::Pedido(string n,string d,int t){
+    nombre = n;
+    direccion = d;
+    tiempo = t;
 }
 Pedido::Pedido(string datos)
 {
@@ -178,5 +183,10 @@ void Pedido::toStr(){
         err="NO";
     }
     cout<<"Erroneo: "<<err<<endl;
+}
+void Pedido::toStr2(){
+    cout << "Producto: " << nombre << endl;
+    cout << "Direccion: " << direccion << endl;
+    cout << "Tiempo de preparacion: " << tiempo << " minuto(s)" << endl;
 }
 

@@ -119,3 +119,14 @@ void Lista::verLista(){
         aux = aux->siguiente;
     }
 }
+void Lista::verLista2(){
+    if(es_vacia()){
+        cout<<"LISTA VACIA"<<endl;
+    }
+    pnodo aux = primero;
+    while(aux != NULL){
+        aux->ped.toStr2();
+        cout << "-------------------" << endl;
+        aux = aux->siguiente;
+    }
+}
