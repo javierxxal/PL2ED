@@ -12,6 +12,8 @@ class NodoArbol
         NodoArbol *izq;
         NodoArbol *der;
         friend class ArbolB;
+        friend class Web;
+        friend class main;
 
 };
 

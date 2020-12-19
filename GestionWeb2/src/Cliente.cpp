@@ -26,5 +26,5 @@ void Cliente::verCliente(){
     cout << "Tipo: " << tipo << endl;
     cout << "Tarjeta: " << tarjeta << endl;
     cout << "Pedidos realizados: " << endl;
-    listaPedidos.verLista();
+    listaPedidos.verLista2();
 }

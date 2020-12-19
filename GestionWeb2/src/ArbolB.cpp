@@ -61,15 +61,22 @@ void ArbolB::insertar(Cliente c, NodoArbol *nodo){
 
 void ArbolB::insertarPedido(Pedido p, NodoArbol * nodo){
     //A la hora de llamar a esta función para el árbol introducir la raiz de este
-    //ERROR FALTA CONSTRUCTOR DE PEDIDO Y CAMBIAR EL PEDIDO DEL SISTEMA A UN PEDIDO PARA CLIENTES
-    if(p.ncliente == nodo->cliente.nombre){
-        nodo->cliente.listaPedidos.insertarDer(p);
+    Pedido introducir = Pedido(p.nombre,p.direccion,p.tiempo);
+    if(esta(p.ncliente,raiz)){
+        if(p.ncliente == nodo->cliente.nombre){
+            nodo->cliente.listaPedidos.insertarDer(introducir);
+        }
+        else if (p.ncliente < nodo->cliente.nombre && nodo->izq !=NULL){
+                insertarPedido(p,nodo->izq);
+        }
+        else if (p.ncliente > nodo->cliente.nombre && nodo->der !=NULL){
+                insertarPedido(p,nodo->der);
+        }
     }
-    else if (p.ncliente < nodo->cliente.nombre && nodo->izq !=NULL){
-            insertarPedido(p,nodo->izq);
-    }
-    else if (p.ncliente > nodo->cliente.nombre && nodo->der !=NULL){
-            insertarPedido(p,nodo->der);
+    else{
+        Cliente nuevoC =  Cliente(p.ncliente,p.tipo,p.tarjeta,p.prioridad);
+        nuevoC.listaPedidos.insertarDer(introducir);
+        insertar(nuevoC,raiz);
     }
 }
 
@@ -91,10 +98,12 @@ bool ArbolB::esta(string nombre, NodoArbol *nodo){
     else return false;
 }
 
-Cliente ArbolB::buscar(string nombre, NodoArbol *nodo){
-    if(nombre == nodo->cliente.nombre) return nodo->cliente;
-    else if (nombre < nodo->cliente.nombre && nodo->izq !=NULL) return buscar(nombre,nodo->izq);
-    else if (nombre > nodo->cliente.nombre && nodo->der !=NULL) return buscar(nombre, nodo->der);
+void ArbolB::buscar(string nombre, NodoArbol *nodo){
+    if(nombre == nodo->cliente.nombre){
+        nodo->cliente.verCliente();
+    }
+    else if (nombre < nodo->cliente.nombre && nodo->izq !=NULL) buscar(nombre,nodo->izq);
+    else if (nombre > nodo->cliente.nombre && nodo->der !=NULL) buscar(nombre, nodo->der);
 }
 
 // 3º entrega
@@ -139,8 +148,8 @@ void ArbolB::mostrarVip(NodoArbol *nodo){
         cout<< nodo->cliente.nombre <<endl;
         cout<< nodo->cliente.tarjeta <<endl;
         cout<< nodo->cliente.tipo <<endl;
-        cout<< '-----------------------------' <<endl;
-        }
+        cout<<"----------------------------------"<<endl;
+    }
     if(nodo->der !=NULL){
         mostrarVip(nodo->der);
     }

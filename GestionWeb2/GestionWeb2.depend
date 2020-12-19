@@ -105,7 +105,7 @@
 	<iostream>
 	"Pedido.h"
 
-1608319204 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\pedido.h
+1608385707 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\pedido.h
 	<string.h>
 	<string>
 
@@ -117,18 +117,21 @@
 	"Nodo.h"
 	"Pedido.h"
 
-1608322389 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\lista.h
+1608385707 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\lista.h
 	"Nodo.h"
 	"Pedido.h"
 
-1608289861 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\web.h
+1608398252 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\web.h
 	"Pedido.h"
 	"Pila.h"
 	"Cola.h"
 	"Lista.h"
+	"ArbolB.h"
 
-1608321244 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cliente.cpp
+1608395555 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cliente.cpp
 	"Cliente.h"
+	<iostream>
+	"Nodo.h"
 
 1608321238 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\cliente.h
 	"Lista.h"
@@ -138,7 +141,7 @@
 	<iostream>
 	"Pedido.h"
 
-1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\lista.cpp
+1608385707 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\lista.cpp
 	"Lista.h"
 	"iostream"
 	"Pedido.h"
@@ -150,10 +153,10 @@
 1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\nodoarbol.cpp
 	"NodoArbol.h"
 
-1608310359 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodoarbol.h
+1608398282 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodoarbol.h
 	"Cliente.h"
 
-1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\pedido.cpp
+1608385707 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\pedido.cpp
 	"Pedido.h"
 	"iostream"
 	<string>
@@ -171,15 +174,16 @@
 	<string>
 	<cstdlib>
 
-1608320969 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\arbolb.cpp
+1608397904 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\arbolb.cpp
 	"ArbolB.h"
 
-1608320174 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\arbolb.h
+1608398303 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\arbolb.h
 	"Cliente.h"
 	"NodoArbol.h"
 	"string"
 	"string.h"
 	"Pedido.h"
+	"Nodo.h"
 
 1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\main.cpp
 	<iostream>

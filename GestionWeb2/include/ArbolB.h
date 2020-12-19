@@ -19,7 +19,7 @@ class ArbolB
         void insertar(Cliente c, NodoArbol *nodo); // Metodo compare to
         void insertarPedido(Pedido p, NodoArbol * nodo);
         bool esta(string nombre, NodoArbol *nodo);
-        Cliente buscar(string nombre, NodoArbol *nodo);
+        void buscar(string nombre, NodoArbol *nodo);
         //3º entrega
         void mostrarPreorden(NodoArbol *nodo);
         int cuentaProducto(string descripcion,NodoArbol *nodo); //Convertir todo a mayus para evitar problemas
@@ -28,6 +28,7 @@ class ArbolB
     private:
     NodoArbol *raiz;
     string nombreRaiz;
+    friend class Web;
 
 
 

@@ -4,7 +4,7 @@
 #include "Pila.h"
 #include "Cola.h"
 #include "Lista.h"
-
+#include "ArbolB.h"
 
 class Web
 {
@@ -26,7 +26,9 @@ public:
         Pila pilaErroneos;
         Cola colaReg;
         Cola colaNR;
-        Lista listaEnviar;
+        Lista listaEnviar1;
+        Lista listaEnviar2;
+        ArbolB arbolCliente;
 
 };
 
