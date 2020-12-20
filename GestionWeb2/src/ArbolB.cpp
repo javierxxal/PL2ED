@@ -15,35 +15,14 @@ ArbolB::~ArbolB()
 bool ArbolB::vacio(){
     return (raiz == NULL);
 }
-int ArbolB::altura(NodoArbol *nodo){
-    //A la hora de llamar a esta función para el árbol introducir la raiz de este
-    if(nodo !=NULL){
-        if(nodo->izq == NULL){
-            if(nodo->der != NULL){
-                return 1 + altura(nodo->der);
-            }
-            else return 0;
-        }
-        else if(nodo->der == NULL){
-            if(nodo->izq !=NULL){
-                return 1 + altura(nodo->izq);
-            }
-            else return 0;
-        }
-        else{
-            return 1 + (altura(nodo->der)>altura(nodo->izq)?altura(nodo->der):altura(nodo->izq)); //se queda con la mayor de las alturas
-        }
-    }
-    else return 0;
 
-}
 void ArbolB::insertar(Cliente c, NodoArbol *nodo){
     //A la hora de llamar a esta función para el árbol introducir la raiz de este
     if (vacio()){
         raiz = new NodoArbol(c);
     }
     else{
-        if(nodo->cliente.nombre==c.nombre || nodo->cliente.nombre < c.nombre){
+        if(nodo->cliente.nombre==c.nombre || nodo->cliente.nombre > c.nombre){
             if(nodo->izq !=NULL){
                 insertar(c, nodo->izq);
             }
@@ -85,23 +64,29 @@ void ArbolB::insertarPedido(Pedido p, NodoArbol * nodo){
 
 
 bool ArbolB::esta(string nombre, NodoArbol *nodo){
-    if(nombre == nodo->cliente.nombre)return true;
-    else if (nombre < nodo->cliente.nombre){
-        if(nodo->izq !=NULL){
-            return esta(nombre, nodo->izq);
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
+    if(!vacio()){
+        if(nombre == nodo->cliente.nombre)return true;
+        else if (nombre < nodo->cliente.nombre){
+            if(nodo->izq !=NULL){
+                return esta(nombre, nodo->izq);
+            }
+            else return false;
         }
-        else return false;
-    }
-    else if (nombre > nodo->cliente.nombre){
-        if(nodo->der !=NULL){
-            return esta(nombre, nodo->der);
+        else if (nombre > nodo->cliente.nombre){
+            if(nodo->der !=NULL){
+                return esta(nombre, nodo->der);
+            }
+            else return false;
         }
         else return false;
     }
     else return false;
 }
 
+// 3º entrega
 void ArbolB::buscar(string nombre, NodoArbol *nodo){
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
     if (!esta(nombre,nodo)){
         cout << "Este cliente no está en el arbol" << endl;
     }
@@ -114,8 +99,8 @@ void ArbolB::buscar(string nombre, NodoArbol *nodo){
     }
 }
 
-// 3º entrega
 void ArbolB::mostrarPreorden(NodoArbol *nodo){
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
     if (vacio()){
         cout << "El arbol esta vacio" << endl;
     }
@@ -130,7 +115,31 @@ void ArbolB::mostrarPreorden(NodoArbol *nodo){
     }
 }
 
+int ArbolB::altura(NodoArbol *nodo){
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
+    if(nodo !=NULL){
+        if(nodo->izq == NULL){
+            if(nodo->der != NULL){
+                return 1 + altura(nodo->der);
+            }
+            else return 0;
+        }
+        else if(nodo->der == NULL){
+            if(nodo->izq !=NULL){
+                return 1 + altura(nodo->izq);
+            }
+            else return 0;
+        }
+        else{
+            return 1 + (altura(nodo->der)>altura(nodo->izq)?altura(nodo->der):altura(nodo->izq)); //se queda con la mayor de las alturas
+        }
+    }
+    else return 0;
+
+}
+
 int ArbolB::cuentaProducto(string descripcion, NodoArbol *nodo){
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
     int r = 0, i = 0,d = 0;
     if (vacio()){
         cout << "El arbol esta vacio" << endl;
@@ -155,6 +164,7 @@ int ArbolB::cuentaProducto(string descripcion, NodoArbol *nodo){
 }
 
 void ArbolB::mostrarVip(NodoArbol *nodo){
+    //A la hora de llamar a esta función para el árbol introducir la raiz de este
     //Como todo el arbol esta ordenado de forma: izq<raiz<der para mostrar los datos de forma ordenada se utiliza el inorden
     if(nodo->izq !=NULL){
         mostrarVip(nodo->izq);

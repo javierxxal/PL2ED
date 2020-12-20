@@ -87,7 +87,7 @@
 1608034384 c:\users\javie\desktop\git hub\pl2ed\gestionweb2\include\nodoarbol.h
 	"Cliente.h"
 
-1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\main.cpp
+1608472192 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\main.cpp
 	<iostream>
 	"Nodo.h"
 	"Pila.h"
@@ -121,19 +121,20 @@
 	"Nodo.h"
 	"Pedido.h"
 
-1608398252 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\web.h
+1608406711 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\web.h
 	"Pedido.h"
 	"Pila.h"
 	"Cola.h"
 	"Lista.h"
 	"ArbolB.h"
+	"Cliente.h"
 
 1608395555 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cliente.cpp
 	"Cliente.h"
 	<iostream>
 	"Nodo.h"
 
-1608321238 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\cliente.h
+1608472192 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\cliente.h
 	"Lista.h"
 
 1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\cola.cpp
@@ -153,7 +154,7 @@
 1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\nodoarbol.cpp
 	"NodoArbol.h"
 
-1608398282 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodoarbol.h
+1608472192 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\nodoarbol.h
 	"Cliente.h"
 
 1608385707 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\pedido.cpp
@@ -168,16 +169,16 @@
 	"Pila.h"
 	<iostream>
 
-1608289861 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\web.cpp
+1608473644 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\web.cpp
 	"Web.h"
 	<fstream>
 	<string>
 	<cstdlib>
 
-1608397904 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\arbolb.cpp
+1608473248 source:c:\users\javie\desktop\github\pl2ed\gestionweb2\src\arbolb.cpp
 	"ArbolB.h"
 
-1608398303 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\arbolb.h
+1608472876 c:\users\javie\desktop\github\pl2ed\gestionweb2\include\arbolb.h
 	"Cliente.h"
 	"NodoArbol.h"
 	"string"

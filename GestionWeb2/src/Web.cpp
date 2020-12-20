@@ -6,6 +6,7 @@
 
 Web::Web()
 {
+    //Creamos un cliente centinela encargado de dividir los clientes alfabeticamente
     Cliente cli = Cliente("Nnnnnnn","123441231","5252523425",0);
     arbolCliente.insertar(cli,arbolCliente.raiz);
 }
@@ -50,6 +51,7 @@ int Web::incluirListaEnvios(Cola& c, int n,int cont){
             c.desencolar();
         }
         else{
+            //Utilizamos el int contador de pasarTiempo para dividir los productos introducidos a las listas
             if (cont%2 == 0){
                 listaEnviar1.insertarOrdenado(c.prim());
             }
@@ -65,8 +67,9 @@ int Web::incluirListaEnvios(Cola& c, int n,int cont){
 }
 
 void Web::pasarTiempo(){
-    //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
+    //El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios
     int orden;
+    //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
     orden = incluirListaEnvios(colaReg,3,0);
     orden = incluirListaEnvios(colaNR,1,orden);
     cout<<"Estas son las estructuras de datos del sistema web:\n";
@@ -179,7 +182,7 @@ void Web::pasarTiempo(){
             listaEnviar2.resto();
         }
         if(!listaEnviar1.es_vacia() || !listaEnviar2.es_vacia()){
-            //Después de realizar esto
+            //Después de realizar esto preguntamos al usuario si desea continuar con el simulador
             cout<<"Quiere continuar al siguiente pedido?(Y:Si,N:No):";
             cin>>continuar;
             if(continuar=='n'){
