@@ -13,14 +13,14 @@ string NR ="NR";
 Pedido::Pedido(){
 
 }
-Pedido::Pedido(string n, string c, string d , string tp , string tj, int t,bool err){
+Pedido::Pedido(string n, string c, string d , string tp , string tj, int t){
     nombre = n;
     ncliente = c;
     direccion = d;
     tipo = tp;
     tarjeta = tj;
     tiempo = t;
-    erroneo = err;
+    erroneo = false;
 
     if(strcmp(VIP.c_str(),tipo.c_str()) == 0){
             prioridad = 2;
@@ -67,7 +67,7 @@ Pedido::Pedido(string datos)
                     t = stoi(str);
                 }
                 catch(exception e){
-                    cout << "Pedido erroneo: tiempo no válido" << endl;
+                    cout << "Pedido erroneo: tiempo no valido" << endl;
                     t = (rand() % 10) + 1;                              //el tiempo se genera random si se ha introducido mal
                     erroneo = true;
                 }

@@ -10,7 +10,7 @@ class Pedido
         //Constructores
         Pedido();
         Pedido(string datos);
-        Pedido(string n, string c, string d , string tp , string tj, int t,bool err);
+        Pedido(string n, string c, string d , string tp , string tj, int t);
         Pedido(string n,string d,int t);
         virtual ~Pedido();
         //Operaciones

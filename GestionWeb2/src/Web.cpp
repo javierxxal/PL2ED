@@ -68,7 +68,7 @@ int Web::incluirListaEnvios(Cola& c, int n,int cont){
 
 void Web::pasarTiempo(){
     //El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios
-    int orden;
+    int orden; //cuando orden es par, introduce pedidos en la lista1 y cuando es impar lo hace en la 2
     //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
     orden = incluirListaEnvios(colaReg,3,0);
     orden = incluirListaEnvios(colaNR,1,orden);
@@ -84,8 +84,8 @@ void Web::pasarTiempo(){
     system("cls");
     // Continuar sirve para que el usuario pare el simulador después  de cada pedido.
     char continuar = 'Y';
-    // Los tiemps t1 y t2 son los tiempos de preparación de cada pedido mientras que treal es el encargado de insertar nuevos pedidos a las listas.
-    int t1, t2 = -1 , treal = 0;
+    // Los tiempos t1 y t2 son los tiempos de preparación de cada pedido mientras que treal es el encargado de insertar nuevos pedidos a las listas cada 2 minutos.
+    int t1 = -1, t2 = -1 , treal = 0;
     // El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
     int caso = 0;
     while((!webVacia()) && continuar != 'N'){
@@ -119,50 +119,66 @@ void Web::pasarTiempo(){
             system("cls");
             //Cada 2 minutos introducimos un pedido nuevo
             if(treal%2==0){
-                //Como tenemos que introducir 2 pedidos en las listas usamos un for para no solo hacer las 2 vueltas sino para asegurarnos que se introducen en la lista correcta
-                for(int i=0; i<2; i++){
-                    //Caso1
-                    if(caso<3){
-                        orden = incluirListaEnvios(colaReg,1,orden);
-                        caso++;
-                    }
-                    //Resto de casos
-                    else{
-                        //Caso 2
-                        if(pilaErroneos.mostrarCima().prioridad !=0){
-                            if(orden%2 == 0){
-                                listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                if (colaNR.esVacia() && colaReg.esVacia() && pilaErroneos.esVacia()){
+                    cout << "Han pasado dos minutos pero no se ha añadido ningun pedido nuevo, ya que no quedan mas pedidos que añadir." << endl;
+                }
+                else{
+
+                    //Como tenemos que introducir 2 pedidos en las listas usamos un for para no solo hacer las 2 vueltas sino para asegurarnos que se introducen en la lista correcta
+                    for(int i=0; i<2; i++){
+                        //Caso1
+                        if(caso<3 && !colaReg.esVacia()){
+                            orden = incluirListaEnvios(colaReg,1,orden);
+                            caso++;
+                        }
+                        //Resto de casos
+                        else{
+                            //Caso 2
+                            if(!pilaErroneos.esVacia() && pilaErroneos.mostrarCima().prioridad !=0){
+                                if(orden%2 == 0){
+                                    listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                                    orden++;
+                                }
+                                else{
+                                    listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
+                                    orden++;
+                                }
+                                pilaErroneos.desapilar();
+                            }
+                            //Caso 3
+                            else if(!colaNR.esVacia()){
+                                orden = incluirListaEnvios(colaNR,1,orden);
+                            }
+                            //Caso 4
+                            else if(!pilaErroneos.esVacia()){
+                                if(orden%2 == 0){
+                                    listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                                }
+                                else{
+                                    listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
+                                }
                                 orden++;
+                                pilaErroneos.desapilar();
                             }
-                            else{
-                                listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
-                                orden++;
-                            }
-                            pilaErroneos.desapilar();
+                            caso = 0;
                         }
-                        //Caso 3
-                        else if(!colaNR.esVacia()){
-                            orden = incluirListaEnvios(colaNR,1,orden);
-                        }
-                        //Caso 4
-                        else if(!pilaErroneos.esVacia()){
-                            if(orden%2 == 0){
-                                listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
-                            }
-                            else{
-                                listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
-                            }
-                            orden++;
-                            pilaErroneos.desapilar();
-                        }
-                        caso = 0;
                     }
+                    cout<<"Han pasado 2 minutos y se han introducido dos pedidos mas:\n";
+                    mostrarColas();
+                    system("pause");
+                    system("cls");
+                    mostrarLista();
+                    system("pause");
+                    system("cls");
+                    mostrarPila();
+                    system("pause");
+                    system("cls");
                 }
             }
         }
         // Si alguna de las condiciones se cumple significa que se ha terminado de preparar sus respectivos pedidos y solo hay que mostrar sus datos y enviarlos.
         if(t1 ==0){
-            cout<<"El pedido:"<<listaEnviar1.prim().nombre <<"ha sido enviado."<<endl;
+            cout<<"El pedido: "<<listaEnviar1.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar1.prim().toStr();
             cout<<"----------------------------------"<<endl;
@@ -172,7 +188,7 @@ void Web::pasarTiempo(){
             listaEnviar1.resto();
         }
         if(t2 ==0){
-            cout<<"El pedido:"<<listaEnviar1.prim().nombre <<"ha sido enviado."<<endl;
+            cout<<"El pedido: "<<listaEnviar2.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar2.prim().toStr();
             cout<<"----------------------------------"<<endl;
@@ -193,7 +209,7 @@ void Web::pasarTiempo(){
             }
         }
     }
-    if(listaEnviar1.es_vacia() && listaEnviar2.es_vacia()){
+    if(webVacia()){
         cout<<"Todos los pedidos introducidos del sistema han sido enviados exitosamente."<<endl;
     }
     else{
@@ -224,4 +240,21 @@ void Web::mostrarLista(){
 }
 bool Web::webVacia(){
     return pilaErroneos.esVacia() && colaReg.esVacia() && colaNR.esVacia() && listaEnviar1.es_vacia() && listaEnviar2.es_vacia();
+}
+void Web::buscarCliente(string nombre){
+    arbolCliente.buscar(nombre,arbolCliente.raiz);
+}
+void Web::alturaArbol(){
+    int altura = arbolCliente.altura(arbolCliente.raiz);
+    cout << "La altura del arbol es de: " << altura << endl;
+}
+void Web::verPreorden(){
+    arbolCliente.mostrarPreorden(arbolCliente.raiz);
+}
+void Web::cuentaProducto(string desc){
+    int cont = arbolCliente.cuentaProducto(desc,arbolCliente.raiz);
+    cout << "Se han realizado " << cont << " pedidos con esa descripcion." << endl;
+}
+void Web::mostrarVip(){
+    arbolCliente.mostrarVip(arbolCliente.raiz);
 }

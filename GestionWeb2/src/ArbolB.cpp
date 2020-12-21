@@ -88,7 +88,7 @@ bool ArbolB::esta(string nombre, NodoArbol *nodo){
 void ArbolB::buscar(string nombre, NodoArbol *nodo){
     //A la hora de llamar a esta función para el árbol introducir la raiz de este
     if (!esta(nombre,nodo)){
-        cout << "Este cliente no está en el arbol" << endl;
+        cout << "Este cliente no esta en el arbol" << endl;
     }
     else{
         if(nombre == nodo->cliente.nombre){
@@ -106,6 +106,8 @@ void ArbolB::mostrarPreorden(NodoArbol *nodo){
     }
     else{
         nodo->cliente.verCliente();
+        cout << "-----------------" << endl;
+        cout << "-----------------" << endl;
         if(nodo->izq !=NULL){
             mostrarPreorden(nodo->izq);
         }

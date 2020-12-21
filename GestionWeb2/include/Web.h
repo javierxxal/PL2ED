@@ -21,6 +21,11 @@ public:
         void mostrarPila();
         void mostrarLista();
         bool webVacia(); //devuelve si TODAS las EEDD de la web estan vacias (a excepcion del arbol)
+        void buscarCliente(string nombre);
+        void alturaArbol();
+        void verPreorden();
+        void cuentaProducto(string desc);
+        void mostrarVip();
     private:
         //Operación auxiliar privada
         int incluirListaEnvios(Cola& c , int n,int cont);//Introduce n pedidos correctos a listaEnviar enviando los errones a pilaErroneos
