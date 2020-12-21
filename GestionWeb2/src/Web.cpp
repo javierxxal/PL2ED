@@ -15,7 +15,11 @@ Web::~Web()
 {
     //dtor
 }
+// variables globales
+// El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
+//El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios. Cuando orden es par, introduce pedidos en la lista1 y cuando es impar lo hace en la 2
 
+int orden=0 , caso = 0;
 void Web::introducirPedido(Pedido p){
     if(p.prioridad == 2 || p.prioridad == 1){
         colaReg.encolar(p);
@@ -66,9 +70,65 @@ int Web::incluirListaEnvios(Cola& c, int n,int cont){
     return cont;
 }
 
+void Web::insertarWeb(){
+    if (colaNR.esVacia() && colaReg.esVacia() && pilaErroneos.esVacia()){
+        cout << "Han pasado dos minutos pero no se ha añadido ningun pedido nuevo, ya que no quedan mas pedidos que añadir." << endl;
+    }
+    else{
+        //Como tenemos que introducir 2 pedidos en las listas usamos un for para no solo hacer las 2 vueltas sino para asegurarnos que se introducen en la lista correcta
+        for(int i=0; i<2; i++){
+                //Caso1
+                if(caso<3 && !colaReg.esVacia()){
+                    orden = incluirListaEnvios(colaReg,1,orden);
+                    caso++;
+                }
+                //Resto de casos
+                else{
+                    //Caso 2
+                    if(!pilaErroneos.esVacia() && pilaErroneos.mostrarCima().prioridad !=0){
+                        if(orden%2 == 0){
+                            listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                            orden++;
+                        }
+                        else{
+                            listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
+                            orden++;
+                        }
+                        pilaErroneos.desapilar();
+                    }
+                    //Caso 3
+                    else if(!colaNR.esVacia()){
+                        orden = incluirListaEnvios(colaNR,1,orden);
+                    }
+                    //Caso 4
+                    else if(!pilaErroneos.esVacia()){
+                        if(orden%2 == 0){
+                            listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
+                        }
+                        else{
+                            listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
+                        }
+                        orden++;
+                        pilaErroneos.desapilar();
+                    }
+                    caso = 0;
+                }
+        }
+        cout<<"Han pasado 2 minutos y se han introducido dos pedidos mas:\n";
+        mostrarColas();
+        system("pause");
+        system("cls");
+        mostrarLista();
+        system("pause");
+        system("cls");
+        mostrarPila();
+        system("pause");
+        system("cls");
+
+    }
+}
+
 void Web::pasarTiempo(){
-    //El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios
-    int orden; //cuando orden es par, introduce pedidos en la lista1 y cuando es impar lo hace en la 2
     //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
     orden = incluirListaEnvios(colaReg,3,0);
     orden = incluirListaEnvios(colaNR,1,orden);
@@ -86,83 +146,66 @@ void Web::pasarTiempo(){
     char continuar = 'Y';
     // treal es el encargado de insertar nuevos pedidos a las listas cada 2 minutos.
     int treal = 0;
-    // El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
-    int caso = 0;
     while((!webVacia()) && continuar != 'N'){
         //Preparamos los pedidos e incluimos 1 pedido cada 2 min
-        while(listaEnviar1.prim().preparacion != 0 && listaEnviar2.prim().preparacion != 0){
-            if(listaEnviar1.prim().preparacion != 0){
-                cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<listaEnviar1.prim().preparacion<<" minutos."<<endl;
-                listaEnviar1.prim().restarPreparacion();
-            }
-            if(listaEnviar2.prim().preparacion != 0){
-                cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<listaEnviar2.prim().preparacion<<" minutos."<<endl;
-                listaEnviar2.prim().restarPreparacion();
-            }
-            treal++;
-            system("pause");
-            system("cls");
-            //Cada 2 minutos introducimos un pedido nuevo
-            if(treal%2==0){
-                if (colaNR.esVacia() && colaReg.esVacia() && pilaErroneos.esVacia()){
-                    cout << "Han pasado dos minutos pero no se ha añadido ningun pedido nuevo, ya que no quedan mas pedidos que añadir." << endl;
+        //Tenemos 3 casos el primero de ellos es cuando ninguna de las dos listas esta vacia
+        if(!listaEnviar1.es_vacia()&&!listaEnviar2.es_vacia()){
+            while(listaEnviar1.prim().preparacion != 0 && listaEnviar2.prim().preparacion != 0){
+                if(listaEnviar1.prim().preparacion != 0){
+                    cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<listaEnviar1.prim().preparacion<<" minutos."<<endl;
+                    listaEnviar1.prim().restarPreparacion();
                 }
-                else{
+                if(listaEnviar2.prim().preparacion != 0){
+                    cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<listaEnviar2.prim().preparacion<<" minutos."<<endl;
+                    listaEnviar2.prim().restarPreparacion();
+                }
+                treal++;
+                system("pause");
+                system("cls");
+                //Cada 2 minutos introducimos un pedido nuevo
+                if(treal%2==0){
+                        insertarWeb();
+                }
+            }
 
-                    //Como tenemos que introducir 2 pedidos en las listas usamos un for para no solo hacer las 2 vueltas sino para asegurarnos que se introducen en la lista correcta
-                    for(int i=0; i<2; i++){
-                        //Caso1
-                        if(caso<3 && !colaReg.esVacia()){
-                            orden = incluirListaEnvios(colaReg,1,orden);
-                            caso++;
-                        }
-                        //Resto de casos
-                        else{
-                            //Caso 2
-                            if(!pilaErroneos.esVacia() && pilaErroneos.mostrarCima().prioridad !=0){
-                                if(orden%2 == 0){
-                                    listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
-                                    orden++;
-                                }
-                                else{
-                                    listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
-                                    orden++;
-                                }
-                                pilaErroneos.desapilar();
-                            }
-                            //Caso 3
-                            else if(!colaNR.esVacia()){
-                                orden = incluirListaEnvios(colaNR,1,orden);
-                            }
-                            //Caso 4
-                            else if(!pilaErroneos.esVacia()){
-                                if(orden%2 == 0){
-                                    listaEnviar1.insertarOrdenado(pilaErroneos.mostrarCima());
-                                }
-                                else{
-                                    listaEnviar2.insertarOrdenado(pilaErroneos.mostrarCima());
-                                }
-                                orden++;
-                                pilaErroneos.desapilar();
-                            }
-                            caso = 0;
-                        }
-                    }
-                    cout<<"Han pasado 2 minutos y se han introducido dos pedidos mas:\n";
-                    mostrarColas();
-                    system("pause");
-                    system("cls");
-                    mostrarLista();
-                    system("pause");
-                    system("cls");
-                    mostrarPila();
-                    system("pause");
-                    system("cls");
+        }
+        //Segundo caso la lista Enviar 2 es vacia pero la lista Enviar 1 NO
+        else if (!listaEnviar1.es_vacia()){
+            while(listaEnviar1.prim().preparacion !=0){
+
+                if(listaEnviar1.prim().preparacion != 0){
+                    cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<listaEnviar1.prim().preparacion<<" minutos."<<endl;
+                    listaEnviar1.prim().restarPreparacion();
+                }
+                treal++;
+                system("pause");
+                system("cls");
+
+                if(treal%2==0){
+                    insertarWeb();
+                }
+            }
+
+        }
+        //Tercer caso la lista Enviar 1 es vauca pero la lista Enviar 2 NO
+        else{
+            while(listaEnviar2.prim().preparacion !=0){
+
+                if(listaEnviar2.prim().preparacion != 0){
+                    cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<listaEnviar2.prim().preparacion<<" minutos."<<endl;
+                    listaEnviar2.prim().restarPreparacion();
+                }
+                treal++;
+                system("pause");
+                system("cls");
+
+                if(treal%2==0){
+                    insertarWeb();
                 }
             }
         }
         // Si alguna de las condiciones se cumple significa que se ha terminado de preparar sus respectivos pedidos y solo hay que mostrar sus datos y enviarlos.
-        if(listaEnviar1.prim().preparacion == 0){
+        if( !listaEnviar1.es_vacia() && listaEnviar1.prim().preparacion == 0){
             cout<<"El pedido: "<<listaEnviar1.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar1.prim().toStr();
@@ -172,7 +215,7 @@ void Web::pasarTiempo(){
             arbolCliente.insertarPedido(listaEnviar1.prim(),arbolCliente.raiz);
             listaEnviar1.resto();
         }
-        if(listaEnviar2.prim().preparacion == 0){
+        if( !listaEnviar2.es_vacia() && listaEnviar2.prim().preparacion == 0){
             cout<<"El pedido: "<<listaEnviar2.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar2.prim().toStr();

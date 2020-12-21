@@ -17,7 +17,6 @@ int main()
 {
     srand((int) time (0));
     Web gestor;
-
     Pedido p1 = Pedido("Ordenador Portatil","Daniel Verduras Gallego","Calle de Alcala","VIP","123456789",7);
     Pedido p2 = Pedido("Teclado Gaming","Javier Alonso Lledo","Calle Madrid","NVIP","8273956235",2);
     Pedido p3 = Pedido("Raton 3.0","Daniel Verduras Gallego","Calle de Alcala","VIP","123456789",9);

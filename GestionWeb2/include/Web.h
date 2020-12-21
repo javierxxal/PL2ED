@@ -26,9 +26,12 @@ public:
         void verPreorden();
         void cuentaProducto(string desc);
         void mostrarVip();
+                int getCosa();
+
     private:
         //Operación auxiliar privada
         int incluirListaEnvios(Cola& c , int n,int cont);//Introduce n pedidos correctos a listaEnviar enviando los errones a pilaErroneos
+        void insertarWeb();//Funcion encargada de rellenar las listas Enviar dependiendo del caso y orden establecido
         //Atributos
         Pila pilaErroneos;
         Cola colaReg;
