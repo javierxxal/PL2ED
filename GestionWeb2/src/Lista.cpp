@@ -99,10 +99,10 @@ void Lista::eult(){
 bool Lista::es_vacia(){
     return(longitud == 0);
 }
-Pedido Lista::prim(){
+Pedido& Lista::prim(){
     return primero->ped;
 }
-Pedido Lista::ult(){
+Pedido& Lista::ult(){
     return ultimo->ped;
 }
 int Lista::lon(){

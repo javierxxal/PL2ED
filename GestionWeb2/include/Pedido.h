@@ -18,6 +18,7 @@ class Pedido
         int getPrioridad(); //Devuelve la prioridad del pedido siendo VIP=2 NVI=1 NR=0
         void toStr();     //Muestratodo el pedido
         void toStr2(); //muestra solo el nombre la direccion y el tiempo del pedido
+        void restarPreparacion();
     private:
         string nombre;
         string ncliente;
@@ -27,6 +28,7 @@ class Pedido
         int tiempo;
         int prioridad;
         bool erroneo;
+        int preparacion; //atributo que guarda el tiempo de preparacion a tiempo real
         friend class Nodo;
         friend class Pila;
         friend class Cola;

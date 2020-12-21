@@ -186,7 +186,7 @@
 	"Pedido.h"
 	"Nodo.h"
 
-1608577444 source:c:\users\dani\documents\github\pl2ed\gestionweb2\main.cpp
+1608579230 source:c:\users\dani\documents\github\pl2ed\gestionweb2\main.cpp
 	<iostream>
 	"Nodo.h"
 	"Pila.h"
@@ -204,7 +204,7 @@
 	<iostream>
 	"Pedido.h"
 
-1608570495 c:\users\dani\documents\github\pl2ed\gestionweb2\include\pedido.h
+1608581983 c:\users\dani\documents\github\pl2ed\gestionweb2\include\pedido.h
 	<string.h>
 	<string>
 
@@ -216,11 +216,11 @@
 	"Nodo.h"
 	"Pedido.h"
 
-1608384134 c:\users\dani\documents\github\pl2ed\gestionweb2\include\lista.h
+1608582269 c:\users\dani\documents\github\pl2ed\gestionweb2\include\lista.h
 	"Nodo.h"
 	"Pedido.h"
 
-1608578759 c:\users\dani\documents\github\pl2ed\gestionweb2\include\web.h
+1608581102 c:\users\dani\documents\github\pl2ed\gestionweb2\include\web.h
 	"Pedido.h"
 	"Pila.h"
 	"Cola.h"
@@ -228,7 +228,7 @@
 	"ArbolB.h"
 	"Cliente.h"
 
-1608574380 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\arbolb.cpp
+1608579230 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\arbolb.cpp
 	"ArbolB.h"
 
 1608573342 c:\users\dani\documents\github\pl2ed\gestionweb2\include\arbolb.h
@@ -250,7 +250,7 @@
 	<iostream>
 	"Pedido.h"
 
-1608384165 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\lista.cpp
+1608582269 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\lista.cpp
 	"Lista.h"
 	"iostream"
 	"Pedido.h"
@@ -262,7 +262,7 @@
 1608381639 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\nodoarbol.cpp
 	"NodoArbol.h"
 
-1608570540 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\pedido.cpp
+1608582230 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\pedido.cpp
 	"Pedido.h"
 	"iostream"
 	<string>
@@ -274,7 +274,7 @@
 	"Pila.h"
 	<iostream>
 
-1608578790 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\web.cpp
+1608582466 source:c:\users\dani\documents\github\pl2ed\gestionweb2\src\web.cpp
 	"Web.h"
 	<fstream>
 	<string>

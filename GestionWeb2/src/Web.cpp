@@ -84,35 +84,20 @@ void Web::pasarTiempo(){
     system("cls");
     // Continuar sirve para que el usuario pare el simulador después  de cada pedido.
     char continuar = 'Y';
-    // Los tiempos t1 y t2 son los tiempos de preparación de cada pedido mientras que treal es el encargado de insertar nuevos pedidos a las listas cada 2 minutos.
-    int t1 = -1, t2 = -1 , treal = 0;
+    // treal es el encargado de insertar nuevos pedidos a las listas cada 2 minutos.
+    int treal = 0;
     // El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
     int caso = 0;
     while((!webVacia()) && continuar != 'N'){
-        //Comprobamos que los tiempos de preparación t1 y t2 son correctos.
-        if(!listaEnviar1.es_vacia() && t1<=0){
-            t1 = listaEnviar1.prim().tiempo;
-        }
-        else if (listaEnviar1.es_vacia() && t1<=0){
-                t1 = -1;
-        }
-
-        if(!listaEnviar2.es_vacia() && t2<=0){
-            t2 = listaEnviar2.prim().tiempo;
-        }
-        else if (listaEnviar2.es_vacia() && t2<=0){
-            t2 = -1;
-        }
-
         //Preparamos los pedidos e incluimos 1 pedido cada 2 min
-        while(t1 != 0 &&  t2 != 0){
-            if(t1 != -1){
-                cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<t1<<" minutos."<<endl;
-                t1--;
+        while(listaEnviar1.prim().preparacion != 0 && listaEnviar2.prim().preparacion != 0){
+            if(listaEnviar1.prim().preparacion != 0){
+                cout<<"El pedido "<<listaEnviar1.prim().nombre<<" esta preparandose, espere "<<listaEnviar1.prim().preparacion<<" minutos."<<endl;
+                listaEnviar1.prim().restarPreparacion();
             }
-            if(t2 != -1){
-                cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<t2<<" minutos."<<endl;
-                t2--;
+            if(listaEnviar2.prim().preparacion != 0){
+                cout<<"El pedido "<<listaEnviar2.prim().nombre<<" esta preparandose, espere "<<listaEnviar2.prim().preparacion<<" minutos."<<endl;
+                listaEnviar2.prim().restarPreparacion();
             }
             treal++;
             system("pause");
@@ -177,7 +162,7 @@ void Web::pasarTiempo(){
             }
         }
         // Si alguna de las condiciones se cumple significa que se ha terminado de preparar sus respectivos pedidos y solo hay que mostrar sus datos y enviarlos.
-        if(t1 ==0){
+        if(listaEnviar1.prim().preparacion == 0){
             cout<<"El pedido: "<<listaEnviar1.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar1.prim().toStr();
@@ -187,7 +172,7 @@ void Web::pasarTiempo(){
             arbolCliente.insertarPedido(listaEnviar1.prim(),arbolCliente.raiz);
             listaEnviar1.resto();
         }
-        if(t2 ==0){
+        if(listaEnviar2.prim().preparacion == 0){
             cout<<"El pedido: "<<listaEnviar2.prim().nombre <<" ha sido enviado."<<endl;
             cout<<"----------------------------------"<<endl;
             listaEnviar2.prim().toStr();

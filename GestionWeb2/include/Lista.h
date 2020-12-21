@@ -16,8 +16,8 @@ class Lista
         void resto();//Elimina el primero pedido de la lista
         void eult(); //Elimina el ultimo pedido de la lista
         bool es_vacia();//Comprueba si una lista es vacia
-        Pedido prim(); //Devuelve el primer pedido de la lista
-        Pedido ult(); //Devuelve el último pedido de la lista
+        Pedido& prim(); //Devuelve el primer pedido de la lista
+        Pedido& ult(); //Devuelve el último pedido de la lista
         int lon();//Devuelve la longitud de la lista
         void verLista(); //muestra todos los datos de los pedidos
         void verLista2(); //solo muestra ciertos datos de los pedidos

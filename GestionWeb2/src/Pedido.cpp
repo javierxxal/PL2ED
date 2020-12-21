@@ -21,6 +21,7 @@ Pedido::Pedido(string n, string c, string d , string tp , string tj, int t){
     tarjeta = tj;
     tiempo = t;
     erroneo = false;
+    preparacion = t;
 
     if(strcmp(VIP.c_str(),tipo.c_str()) == 0){
             prioridad = 2;
@@ -154,6 +155,7 @@ Pedido::Pedido(string datos)
         erroneo = true;
 
     }
+    preparacion = tiempo;
 
 }
 Pedido::~Pedido()
@@ -188,5 +190,8 @@ void Pedido::toStr2(){
     cout << "Producto: " << nombre << endl;
     cout << "Direccion: " << direccion << endl;
     cout << "Tiempo de preparacion: " << tiempo << " minuto(s)" << endl;
+}
+void Pedido::restarPreparacion(){
+    preparacion = preparacion - 1;
 }
 
