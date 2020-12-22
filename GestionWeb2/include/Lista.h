@@ -20,7 +20,7 @@ class Lista
         Pedido& ult(); //Devuelve el último pedido de la lista
         int lon();//Devuelve la longitud de la lista
         void verLista(); //muestra todos los datos de los pedidos
-        void verLista2(); //solo muestra ciertos datos de los pedidos
+        void verLista2(); //solo muestra ciertos datos de los pedidos (utilizada para clientes)
 
     private:
         //Atributos

@@ -21,16 +21,15 @@ public:
         void mostrarPila();
         void mostrarLista();
         bool webVacia(); //devuelve si TODAS las EEDD de la web estan vacias (a excepcion del arbol)
-        void buscarCliente(string nombre);
-        void alturaArbol();
-        void verPreorden();
-        void cuentaProducto(string desc);
-        void mostrarVip();
-                int getCosa();
+        void buscarCliente(string nombre); //busca un cliente en el arbol de clientes a partir del nombre
+        void alturaArbol(); //muestra la altura del arbol de clientes
+        void verPreorden(); //recorre el arbol en preorden
+        void cuentaProducto(string desc); //cuenta el numero de productos pedidos que cumplen una descripcion
+        void mostrarVip();//muestra los clientes vip de un arbol alfabeticamente
 
     private:
         //Operación auxiliar privada
-        int incluirListaEnvios(Cola& c , int n,int cont);//Introduce n pedidos correctos a listaEnviar enviando los errones a pilaErroneos
+        int incluirListaEnvios(Cola& c , int n,int cont);//Introduce n pedidos correctos a listaEnviar1 o 2 (dependiendo del contador) enviando los errones a pilaErroneos
         void insertarWeb();//Funcion encargada de rellenar las listas Enviar dependiendo del caso y orden establecido
         //Atributos
         Pila pilaErroneos;

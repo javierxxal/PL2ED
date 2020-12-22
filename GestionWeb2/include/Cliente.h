@@ -6,8 +6,8 @@ class Cliente
 {
     public:
         Cliente();
-        Cliente(string n, string t, string tj, int p); //Falta el cpp de esto
-        void verCliente();// Una función void que muestre los datos del cliente y los pedidos de la lista de pedidos (puede que se tenga que retocar el toStr)
+        Cliente(string n, string t, string tj, int p);
+        void verCliente();//muestra los datos del cliente
         ~Cliente();
     private:
         string nombre;

@@ -17,8 +17,8 @@ Web::~Web()
 }
 // variables globales
 // El int caso se utiliza para saber que tipo de pedido introducir en las listas de envios
-//El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios. Cuando orden es par, introduce pedidos en la lista1 y cuando es impar lo hace en la 2
-
+//El int orden tiene la función de contar cuantos productos han sido introducidos para poder ser divididos en las dos listas de envios.
+//Cuando orden es par, introduce pedidos en la lista1 y cuando es impar lo hace en la 2
 int orden=0 , caso = 0;
 void Web::introducirPedido(Pedido p){
     if(p.prioridad == 2 || p.prioridad == 1){
@@ -75,7 +75,7 @@ void Web::insertarWeb(){
         cout << "Han pasado dos minutos pero no se ha añadido ningun pedido nuevo, ya que no quedan mas pedidos que añadir." << endl;
     }
     else{
-        //Como tenemos que introducir 2 pedidos en las listas usamos un for para no solo hacer las 2 vueltas sino para asegurarnos que se introducen en la lista correcta
+        //Como tenemos que introducir 2 pedidos en las listas usamos un for
         for(int i=0; i<2; i++){
                 //Caso1
                 if(caso<3 && !colaReg.esVacia()){
@@ -114,6 +114,7 @@ void Web::insertarWeb(){
                     caso = 0;
                 }
         }
+        //despues de insertarse los dos pedidos se muestran las EEDD del sistema
         cout<<"Han pasado 2 minutos y se han introducido dos pedidos mas:\n";
         mostrarColas();
         system("pause");
@@ -129,7 +130,7 @@ void Web::insertarWeb(){
 }
 
 void Web::pasarTiempo(){
-    //Primero insertamos 3 pedidos correctos de usuarios registrados en listaEnviar
+    //Primero insertamos 3 pedidos correctos de usuarios registrados y otro de cliente no registrado
     orden = incluirListaEnvios(colaReg,3,0);
     orden = incluirListaEnvios(colaNR,1,orden);
     cout<<"Estas son las estructuras de datos del sistema web:\n";
@@ -188,6 +189,7 @@ void Web::pasarTiempo(){
 
         }
         //Tercer caso la lista Enviar 1 es vauca pero la lista Enviar 2 NO
+        //si las dos fueran vacias no entraria en el bucle, por lo que podemos poner else
         else{
             while(listaEnviar2.prim().preparacion !=0){
 

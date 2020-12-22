@@ -113,7 +113,7 @@ int main()
         cin >> elec;
         eleccion = elec;
         system("cls");
-        if (eleccion == 1){  //cambiar a switch case
+        if (eleccion == 1){
             string nombre;
             cout << "Introduce el nombre que quieras buscar en el arbol: " << endl;
             cin.ignore();
